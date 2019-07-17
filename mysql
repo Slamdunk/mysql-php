@@ -1,0 +1,28 @@
+#!/usr/bin/env php
+<?php
+
+foreach ([__DIR__ . '/../../autoload.php', __DIR__ . '/../vendor/autoload.php', __DIR__ . '/vendor/autoload.php'] as $file) {
+    if (file_exists($file)) {
+        require $file;
+        break;
+    }
+}
+
+$opts = getopt('', [
+    'host:',
+    'username:',
+    'password:',
+    'database:',
+    'port:',
+    'socket:',
+]);
+$mysql = new \SlamMysql\Mysql(
+    $opts['host'] ?? '',
+    $opts['username'] ?? '',
+    $opts['password'] ?? '',
+    $opts['database'] ?? '',
+    (int) $opts['port'],
+    $opts['socket'] ?? '',
+);
+$return = $mysql->run(STDIN, STDOUT, STDERR);
+exit(true === $return ? 0 : 1);

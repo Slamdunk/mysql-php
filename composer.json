@@ -31,5 +31,8 @@
         "psr-4": {
             "SlamMysql\\Tests\\": "tests/"
         }
-    }
+    },
+    "bin": [
+        "mysql"
+    ]
 }
