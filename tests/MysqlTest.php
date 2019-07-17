@@ -22,7 +22,7 @@ final class MysqlTest extends TestCase
         $this->mysql = new Mysql(
             '127.0.0.1',
             'root',
-            'pwd',
+            '',
             '',
             3306,
             ''

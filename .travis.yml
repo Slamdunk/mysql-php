@@ -10,9 +10,10 @@ cache:
   directories:
     - $HOME/.composer/cache
 
-install:
-  - sh .travis-install-mysql-5.7.sh
-  - wget -qO - https://github.com/Slamdunk/travis-scripts/raw/master/php-install.sh | sh
+services:
+  - mysql
+
+install: wget -qO - https://github.com/Slamdunk/travis-scripts/raw/master/php-install.sh | sh
 
 script: wget -qO - https://github.com/Slamdunk/travis-scripts/raw/master/php-script.sh | sh
 
