@@ -62,7 +62,9 @@ final class Mysql
             // @codeCoverageIgnoreEnd
         }
         if (0 === $result) {
+            // @codeCoverageIgnoreStart
             return false;
+            // @codeCoverageIgnoreEnd
         }
 
         $mysqli = @new mysqli(

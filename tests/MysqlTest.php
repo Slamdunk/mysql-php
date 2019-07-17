@@ -29,11 +29,6 @@ final class MysqlTest extends TestCase
         );
     }
 
-    public function testSkipOnEmptyStream(): void
-    {
-        static::assertFalse($this->mysql->run(\STDIN, \STDOUT, \STDERR));
-    }
-
     public function testErroneousConnectionParameters(): void
     {
         $user  = \uniqid('root_');
