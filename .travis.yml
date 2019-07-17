@@ -1,0 +1,20 @@
+language: php
+
+matrix:
+  fast_finish: true
+  include:
+    - php: 7.3
+      env: CS_CHECK=1 STATIC_ANALYSIS=1 CODE_COVERAGE=1
+
+cache:
+  directories:
+    - $HOME/.composer/cache
+
+install:
+  - sh .travis-install-mysql-5.7.sh
+  - wget -qO - https://github.com/Slamdunk/travis-scripts/raw/master/php-install.sh | sh
+
+script: wget -qO - https://github.com/Slamdunk/travis-scripts/raw/master/php-script.sh | sh
+
+notifications:
+  email: false
