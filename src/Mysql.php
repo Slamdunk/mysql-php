@@ -56,14 +56,14 @@ final class Mysql
         $result = \stream_select($read, $write, $except, 0);
         if (false === $result) {
             // @codeCoverageIgnoreStart
-            \fwrite($errorStream, 'stream_select failed' . PHP_EOL);
+            \fwrite($errorStream, 'stream_select failed' . \PHP_EOL);
 
             return false;
             // @codeCoverageIgnoreEnd
         }
         if (0 === $result) {
             // @codeCoverageIgnoreStart
-            \fwrite($errorStream, 'Input stream is empty' . PHP_EOL);
+            \fwrite($errorStream, 'Input stream is empty' . \PHP_EOL);
 
             return false;
             // @codeCoverageIgnoreEnd
@@ -79,7 +79,7 @@ final class Mysql
         );
 
         if ($mysqli->connect_error) {
-            \fwrite($errorStream, 'MySQLi Error (' . $mysqli->connect_errno . '):' . $mysqli->connect_error . PHP_EOL);
+            \fwrite($errorStream, 'MySQLi Error (' . $mysqli->connect_errno . '):' . $mysqli->connect_error . \PHP_EOL);
 
             return false;
         }
@@ -124,7 +124,7 @@ final class Mysql
         $mysqli->real_query($query);
 
         if ($mysqli->error) {
-            \fwrite($errorStream, 'Query Error (' . $mysqli->errno . '):' . $mysqli->error  . PHP_EOL . PHP_EOL . 'Query: "' . $query . '"' . PHP_EOL);
+            \fwrite($errorStream, 'Query Error (' . $mysqli->errno . '):' . $mysqli->error . \PHP_EOL . \PHP_EOL . 'Query: "' . $query . '"' . \PHP_EOL);
 
             return false;
         }
