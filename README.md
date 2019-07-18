@@ -56,7 +56,7 @@ mysql
 performance_schema
 sys
 
-$ ./mysql < foobar_huge_dump.sql
+$ ./mysql --database foobar < foobar_huge_dump.sql
 ```
 
 ### From PHP
@@ -67,4 +67,8 @@ $return = $mysql->run(\STDIN, \STDOUT, \STDERR);
 exit((int) (true !== $return));
 ```
 
-`\SlamMysql\Mysql::run` accept any type of stream readable by `fgets/fwrite` functions.
+`\SlamMysql\Mysql::run` accepts any type of resource consumable by `fgets/fwrite` functions.
+
+## Related projects
+
+1. [ifsnop/mysqldump-php](https://github.com/ifsnop/mysqldump-php): `mysqldump` binary port in pure PHP
