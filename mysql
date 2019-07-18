@@ -3,7 +3,7 @@
 
 require __DIR__ . '/src/Mysql.php';
 
-$opts = getopt('', [
+$opts = \getopt('', [
     'host:',
     'username:',
     'password:',
@@ -12,12 +12,12 @@ $opts = getopt('', [
     'socket:',
 ]);
 $mysql = new \SlamMysql\Mysql(
-    $opts['host'] ?? '',
-    $opts['username'] ?? '',
-    $opts['password'] ?? '',
+    $opts['host'] ?? \ini_get('mysqli.default_host'),
+    $opts['username'] ?? \ini_get('mysqli.default_user'),
+    $opts['password'] ?? \ini_get('mysqli.default_pw'),
     $opts['database'] ?? '',
-    (int) $opts['port'],
-    $opts['socket'] ?? '',
+    (int) ($opts['port'] ?? \ini_get('mysqli.default_port')),
+    $opts['socket'] ?? \ini_get('mysqli.default_socket'),
 );
-$return = $mysql->run(STDIN, STDOUT, STDERR);
-exit(true === $return ? 0 : 1);
+$return = $mysql->run(\STDIN, \STDOUT, \STDERR);
+exit((int) (true !== $return));
