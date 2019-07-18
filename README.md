@@ -25,11 +25,13 @@ Speed is exactly the **same** of the original `mysql` binary thanks to streams u
 
 ## Supported formats
 
-|Input type|Supported?|
-|---|:---:|
-|`mysqldump` output|:heavy_check_mark:|
-|Single query on multiple lines|:heavy_check_mark:|
-|Multiple query on single line|:x:|
+|Input type|Example|Supported?|
+|---|---|:---:|
+|`mysqldump` output|*as is*|:heavy_check_mark:|
+|Single query on single line|`SELECT NOW();`|:heavy_check_mark:|
+|Single query on multiple lines|`SELECT`<br />`NOW();`|:heavy_check_mark:|
+|Multiple queries on separated single or multiple lines|`SELECT NOW();`<br />`SELECT NOW();`|:heavy_check_mark:|
+|Multiple queries on single line|`SELECT NOW();SELECT NOW();`|:x:|
 
 ## Usage
 
