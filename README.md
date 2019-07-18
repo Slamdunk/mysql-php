@@ -35,3 +35,36 @@ Speed is exactly the **same** of the original `mysql` binary thanks to streams u
 
 ## Usage
 
+The library provides two usages, the binary and the `\SlamMysql\Mysql` class.
+
+### From CLI
+
+```
+$ ./mysql -h
+Usage: mysql [OPTIONS]
+  --host       Connect to host     [Default: INI mysqli.default_host]
+  --port       Port number         [Default: INI mysqli.default_port]
+  --username   User for login      [Default: INI mysqli.default_user]
+  --password   Password to use     [Default: INI mysqli.default_pw]
+  --database   Database to use     [Default: empty]
+  --socket     The socket file     [Default: INI mysqli.default_socket]
+
+$ printf "CREATE DATABASE foobar;\nSHOW DATABASES;" | ./mysql
+information_schema
+foobar
+mysql
+performance_schema
+sys
+
+$ ./mysql < foobar_huge_dump.sql
+```
+
+### From PHP
+
+```php
+$mysql = new \SlamMysql\Mysql('localhost', 'root');
+$return = $mysql->run(\STDIN, \STDOUT, \STDERR);
+exit((int) (true !== $return));
+```
+
+`\SlamMysql\Mysql::run` accept any type of stream readable by `fgets/fwrite` functions.
