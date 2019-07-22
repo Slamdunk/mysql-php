@@ -62,7 +62,7 @@ $ ./mysql --database foobar < foobar_huge_dump.sql
 ### From PHP
 
 ```php
-$mysql = new \SlamMysql\Mysql('localhost', 'root');
+$mysql = new \SlamMysql\Mysql('localhost', 'root', 'pwd', 'my_database', 3306, '/socket');
 $return = $mysql->run(\STDIN, \STDOUT, \STDERR);
 exit((int) (true !== $return));
 ```
