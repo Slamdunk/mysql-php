@@ -5,7 +5,7 @@ require __DIR__ . '/src/Mysql.php';
 
 $opts = \getopt('h', [
     'host:',
-    'username:',
+    'user:',
     'password:',
     'database:',
     'port:',
@@ -16,7 +16,7 @@ if (\array_key_exists('h', $opts)) {
         'Usage: mysql [OPTIONS]',
         '  --host       Connect to host     [Default: INI mysqli.default_host]',
         '  --port       Port number         [Default: INI mysqli.default_port]',
-        '  --username   User for login      [Default: INI mysqli.default_user]',
+        '  --user       User for login      [Default: INI mysqli.default_user]',
         '  --password   Password to use     [Default: INI mysqli.default_pw]',
         '  --database   Database to use     [Default: empty]',
         '  --socket     The socket file     [Default: INI mysqli.default_socket]',
@@ -27,7 +27,7 @@ if (\array_key_exists('h', $opts)) {
 
 $mysql = new \SlamMysql\Mysql(
     $opts['host'] ?? \ini_get('mysqli.default_host'),
-    $opts['username'] ?? \ini_get('mysqli.default_user'),
+    $opts['user'] ?? \ini_get('mysqli.default_user'),
     $opts['password'] ?? \ini_get('mysqli.default_pw'),
     $opts['database'] ?? '',
     (int) ($opts['port'] ?? \ini_get('mysqli.default_port')),
