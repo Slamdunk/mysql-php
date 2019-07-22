@@ -17,7 +17,7 @@ install: wget -qO - https://github.com/Slamdunk/travis-scripts/raw/master/php-in
 
 script:
   - wget -qO - https://github.com/Slamdunk/travis-scripts/raw/master/php-script.sh | sh
-  - echo "SHOW DATABASES" | ./mysql --host 127.0.0.1 --username root
+  - echo "SHOW TABLES" | ./mysql --host 127.0.0.1 --user root --database information_schema
 
 notifications:
   email: false
