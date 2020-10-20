@@ -98,6 +98,14 @@ jobs:
         if: ${{ matrix.php-version == '8.0' }}
         run: "composer update --no-interaction --no-progress --ignore-platform-reqs"
 
+      - name: "Wait for MySQL to be ready"
+        run: |
+          until mysql --host=127.0.0.1 --port=3306 --user=root --password=root_password &> /dev/null
+          do
+            printf "."
+            sleep 1
+          done
+
       - name: "Run tests"
         timeout-minutes: 3
         run: "vendor/bin/phpunit --no-coverage --no-logging"
@@ -136,6 +144,14 @@ jobs:
 
       - name: "Install dependencies"
         run: "composer update --no-interaction --no-progress"
+
+      - name: "Wait for MySQL to be ready"
+        run: |
+          until mysql --host=127.0.0.1 --port=3306 --user=root --password=root_password &> /dev/null
+          do
+            printf "."
+            sleep 1
+          done
 
       - name: "Run tests"
         timeout-minutes: 3
