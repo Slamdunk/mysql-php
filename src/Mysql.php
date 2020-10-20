@@ -8,30 +8,12 @@ use mysqli;
 
 final class Mysql
 {
-    /**
-     * @var string
-     */
-    private $host;
-    /**
-     * @var string
-     */
-    private $username;
-    /**
-     * @var string
-     */
-    private $password;
-    /**
-     * @var string
-     */
-    private $database;
-    /**
-     * @var int
-     */
-    private $port;
-    /**
-     * @var string
-     */
-    private $socket;
+    private string $host;
+    private string $username;
+    private string $password;
+    private string $database;
+    private int $port;
+    private string $socket;
 
     public function __construct(string $host, string $username, string $password, string $database, int $port, string $socket)
     {
@@ -78,7 +60,7 @@ final class Mysql
             $this->socket
         );
 
-        if ($mysqli->connect_error) {
+        if (null !== $mysqli->connect_error && '' !== $mysqli->connect_error) {
             \fwrite($errorStream, 'MySQLi Error (' . $mysqli->connect_errno . '):' . $mysqli->connect_error . \PHP_EOL);
 
             return false;
@@ -123,7 +105,7 @@ final class Mysql
     {
         $mysqli->real_query($query);
 
-        if ($mysqli->error) {
+        if (null !== $mysqli->error && '' !== $mysqli->error) {
             \fwrite($errorStream, 'Query Error (' . $mysqli->errno . '):' . $mysqli->error . \PHP_EOL . \PHP_EOL . 'Query: "' . $query . '"' . \PHP_EOL);
 
             return false;
