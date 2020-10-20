@@ -12,17 +12,14 @@ use SlamMysql\Mysql;
  */
 final class MysqlTest extends TestCase
 {
-    /**
-     * @var Mysql
-     */
-    private $mysql;
+    private Mysql $mysql;
 
     protected function setUp(): void
     {
         $this->mysql = new Mysql(
             '127.0.0.1',
             'root',
-            '',
+            'root_password',
             '',
             3306,
             ''
