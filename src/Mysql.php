@@ -60,7 +60,7 @@ final class Mysql
             $this->socket
         );
 
-        if ('' !== $mysqli->connect_error) {
+        if (null !== $mysqli->connect_error && '' !== $mysqli->connect_error) {
             \fwrite($errorStream, 'MySQLi Error (' . $mysqli->connect_errno . '):' . $mysqli->connect_error . \PHP_EOL);
 
             return false;
@@ -105,7 +105,7 @@ final class Mysql
     {
         $mysqli->real_query($query);
 
-        if ('' !== $mysqli->error) {
+        if (null !== $mysqli->error && '' !== $mysqli->error) {
             \fwrite($errorStream, 'Query Error (' . $mysqli->errno . '):' . $mysqli->error . \PHP_EOL . \PHP_EOL . 'Query: "' . $query . '"' . \PHP_EOL);
 
             return false;
