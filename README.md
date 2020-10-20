@@ -1,10 +1,9 @@
 # MySQL bin in PHP
 
-[![Build Status](https://travis-ci.org/Slamdunk/mysql-php.svg?branch=master)](https://travis-ci.org/Slamdunk/mysql-php)
-[![Code Coverage](https://scrutinizer-ci.com/g/Slamdunk/mysql-php/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/Slamdunk/mysql-php/?branch=master)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/Slamdunk/mysql-php/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/Slamdunk/mysql-php/?branch=master)
-[![Latest Stable Version](https://poser.pugx.org/slam/mysql-php/v/stable.svg)](https://packagist.org/packages/slam/mysql-php)
-[![Total Downloads](https://poser.pugx.org/slam/mysql-php/downloads.png)](https://packagist.org/packages/slam/mysql-php)
+[![Latest Stable Version](https://img.shields.io/packagist/v/slam/mysql-php.svg)](https://packagist.org/packages/slam/mysql-php)
+[![Downloads](https://img.shields.io/packagist/dt/slam/mysql-php.svg)](https://packagist.org/packages/slam/mysql-php)
+[![Integrate](https://github.com/Slamdunk/mysql-php/workflows/Integrate/badge.svg?branch=master)](https://github.com/Slamdunk/mysql-php/actions)
+[![Code Coverage](https://codecov.io/gh/Slamdunk/mysql-php/coverage.svg?branch=master)](https://codecov.io/gh/Slamdunk/mysql-php?branch=master)
 
 PHP light version of mysql cli that comes with MySQL.
 
