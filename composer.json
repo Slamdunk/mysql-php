@@ -1,10 +1,10 @@
 {
     "name": "slam/mysql-php",
     "description": "PHP version of mysql cli that comes with MySQL",
+    "license": "MIT",
     "keywords": [
         "mysql"
     ],
-    "license": "MIT",
     "authors": [
         {
             "name": "Filippo Tessarotto",
@@ -12,15 +12,15 @@
         }
     ],
     "require": {
-        "php": "^7.4 || ^8.0",
+        "php": "~8.0.0 || ~8.1.0",
         "ext-mysqli": "*"
     },
     "require-dev": {
-        "friendsofphp/php-cs-fixer": "^2.16",
-        "phpstan/phpstan": "^0.12.50",
-        "phpstan/phpstan-phpunit": "^0.12",
-        "phpstan/phpstan-strict-rules": "^0.12",
-        "phpunit/phpunit": "^9.4.2"
+        "friendsofphp/php-cs-fixer": "^3.8.0",
+        "phpstan/phpstan": "^1.5.7",
+        "phpstan/phpstan-phpunit": "^1.1.1",
+        "phpstan/phpstan-strict-rules": "^1.1.0",
+        "phpunit/phpunit": "^9.5.20"
     },
     "autoload": {
         "psr-4": {
