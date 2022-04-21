@@ -13,11 +13,6 @@ PHP light version of mysql cli that comes with MySQL.
 1. You need to import a large mysql dump
 1. You don't have access to the native `mysql` client
 
-## Requirements
-
-1. PHP 7.3
-1. `ext-mysqli`
-
 ## Performance
 
 Speed is exactly the **same** of the original `mysql` binary thanks to streams usage.
