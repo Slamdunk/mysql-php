@@ -11,16 +11,16 @@ csfix: vendor
 
 .PHONY: static-analysis
 static-analysis: vendor
-	vendor/bin/phpstan analyse
+	php -d zend.assertions=1 vendor/bin/phpstan analyse
 
 .PHONY: test
 test: vendor
 	php -d zend.assertions=1 vendor/bin/phpunit
 
-.PHONY: mysql-start
-mysql-start:
-	docker run --publish 3306:3306 --rm --name mysql-php-testing --env MYSQL_ROOT_PASSWORD=root_password --detach mysql:5.7
+.PHONY: mariadb-start
+mariadb-start:
+	docker run --publish 3306:3306 --rm --name mariadb-php-testing --env MARIADB_ROOT_PASSWORD=root_password --detach mariadb:latest
 
-.PHONY: mysql-stop
-mysql-stop:
-	docker stop mysql-php-testing
+.PHONY: mariadb-stop
+mariadb-stop:
+	docker stop mariadb-php-testing
