@@ -4,9 +4,6 @@ declare(strict_types=1);
 
 namespace SlamMysql;
 
-use mysqli;
-use mysqli_sql_exception;
-
 final class Mysql implements MysqlInterface
 {
     public function __construct(
@@ -48,7 +45,7 @@ final class Mysql implements MysqlInterface
         mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 
         try {
-            $mysqli = new mysqli(
+            $mysqli = new \mysqli(
                 $this->host,
                 $this->username,
                 $this->password,
@@ -56,7 +53,7 @@ final class Mysql implements MysqlInterface
                 $this->port,
                 $this->socket
             );
-        } catch (mysqli_sql_exception $mysqli_sql_exception) {
+        } catch (\mysqli_sql_exception $mysqli_sql_exception) {
             fwrite($errorStream, 'MySQLi Error ('.$mysqli_sql_exception->getCode().'):'.$mysqli_sql_exception->getMessage().PHP_EOL);
 
             return false;
@@ -97,11 +94,11 @@ final class Mysql implements MysqlInterface
      * @param resource $outputStream
      * @param resource $errorStream
      */
-    private function executeQuery(string $query, mysqli $mysqli, $outputStream, $errorStream): bool
+    private function executeQuery(string $query, \mysqli $mysqli, $outputStream, $errorStream): bool
     {
         try {
             $mysqli->real_query($query);
-        } catch (mysqli_sql_exception $mysqli_sql_exception) {
+        } catch (\mysqli_sql_exception $mysqli_sql_exception) {
             fwrite($errorStream, 'Query Error ('.$mysqli_sql_exception->getCode().'):'.$mysqli_sql_exception->getMessage().PHP_EOL.PHP_EOL.'Query: "'.$query.'"'.PHP_EOL);
 
             return false;

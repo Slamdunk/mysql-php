@@ -3,6 +3,7 @@ all: csfix static-analysis test
 
 vendor: composer.json
 	composer update
+	composer bump
 	touch vendor
 
 .PHONY: csfix
