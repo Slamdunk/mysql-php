@@ -12,6 +12,7 @@ $config = (new PhpCsFixer\Config())
         '@PhpCsFixer' => true,
         '@PhpCsFixer:risky' => true,
         'error_suppression'=> false,
+        'php_unit_test_case_static_method_calls' => false,
     ]);
 
 $config->getFinder()

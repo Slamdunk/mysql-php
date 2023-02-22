@@ -2,7 +2,7 @@
 
 [![Latest Stable Version](https://img.shields.io/packagist/v/slam/mysql-php.svg)](https://packagist.org/packages/slam/mysql-php)
 [![Downloads](https://img.shields.io/packagist/dt/slam/mysql-php.svg)](https://packagist.org/packages/slam/mysql-php)
-[![Integrate](https://github.com/Slamdunk/mysql-php/workflows/Integrate/badge.svg?branch=master)](https://github.com/Slamdunk/mysql-php/actions)
+[![Integrate](https://github.com/Slamdunk/mysql-php/workflows/CI/badge.svg?branch=master)](https://github.com/Slamdunk/mysql-php/actions)
 [![Code Coverage](https://codecov.io/gh/Slamdunk/mysql-php/coverage.svg?branch=master)](https://codecov.io/gh/Slamdunk/mysql-php?branch=master)
 
 PHP light version of mysql cli that comes with MySQL.

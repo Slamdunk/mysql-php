@@ -4,13 +4,18 @@ declare(strict_types=1);
 
 namespace SlamMysql\Tests;
 
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use SlamMysql\Mysql;
 
 /**
- * @covers \SlamMysql\Mysql
- *
  * @internal
+ */
+#[CoversClass(Mysql::class)]
+/**
+ * @internal
+ *
+ * @coversNothing
  */
 final class MysqlTest extends TestCase
 {
@@ -41,10 +46,10 @@ final class MysqlTest extends TestCase
         );
 
         [$inputFile, $outputFile, $errorFile] = $this->createStreams('SHOW DATABASES');
-        static::assertFalse($mysql->run($inputFile, $outputFile, $errorFile));
+        self::assertFalse($mysql->run($inputFile, $outputFile, $errorFile));
 
         rewind($errorFile);
-        static::assertStringContainsString($user, (string) stream_get_contents($errorFile));
+        self::assertStringContainsString($user, (string) stream_get_contents($errorFile));
     }
 
     public function testReadDataFromInputAndReturnOutput(): void
@@ -52,16 +57,16 @@ final class MysqlTest extends TestCase
         $databaseName = uniqid('db_');
 
         [$inputFile, $outputFile, $errorFile] = $this->createStreams(sprintf('CREATE DATABASE %s', $databaseName));
-        static::assertTrue($this->mysql->run($inputFile, $outputFile, $errorFile));
+        self::assertTrue($this->mysql->run($inputFile, $outputFile, $errorFile));
 
         rewind($outputFile);
-        static::assertEmpty(stream_get_contents($outputFile));
+        self::assertEmpty(stream_get_contents($outputFile));
 
         [$inputFile, $outputFile, $errorFile] = $this->createStreams('SHOW DATABASES');
-        static::assertTrue($this->mysql->run($inputFile, $outputFile, $errorFile));
+        self::assertTrue($this->mysql->run($inputFile, $outputFile, $errorFile));
 
         rewind($outputFile);
-        static::assertStringContainsString($databaseName, (string) stream_get_contents($outputFile));
+        self::assertStringContainsString($databaseName, (string) stream_get_contents($outputFile));
     }
 
     public function testHandleMultipleQueries(): void
@@ -70,7 +75,7 @@ final class MysqlTest extends TestCase
             'SHOW VARIABLES;',
             'SHOW VARIABLES;',
         ]));
-        static::assertTrue($this->mysql->run($inputFile, $outputFile, $errorFile));
+        self::assertTrue($this->mysql->run($inputFile, $outputFile, $errorFile));
     }
 
     public function testSkipCommentLines(): void
@@ -80,7 +85,7 @@ final class MysqlTest extends TestCase
             '-- foo '.uniqid(),
             'SHOW VARIABLES;',
         ]));
-        static::assertTrue($this->mysql->run($inputFile, $outputFile, $errorFile));
+        self::assertTrue($this->mysql->run($inputFile, $outputFile, $errorFile));
     }
 
     public function testReportSpecificQueryOnError(): void
@@ -90,12 +95,12 @@ final class MysqlTest extends TestCase
             'SHOW VARIABLES;',
             $wrongQuery.';',
         ]));
-        static::assertFalse($this->mysql->run($inputFile, $outputFile, $errorFile));
+        self::assertFalse($this->mysql->run($inputFile, $outputFile, $errorFile));
 
         rewind($errorFile);
         $output = (string) stream_get_contents($errorFile);
-        static::assertStringContainsString($wrongQuery, $output);
-        static::assertStringNotContainsString('SHOW VARIABLES', $output);
+        self::assertStringContainsString($wrongQuery, $output);
+        self::assertStringNotContainsString('SHOW VARIABLES', $output);
     }
 
     public function testReportSpecificQueryOnErrorInEndingFile(): void
@@ -105,12 +110,12 @@ final class MysqlTest extends TestCase
             'SHOW VARIABLES;',
             $wrongQuery,
         ]));
-        static::assertFalse($this->mysql->run($inputFile, $outputFile, $errorFile));
+        self::assertFalse($this->mysql->run($inputFile, $outputFile, $errorFile));
 
         rewind($errorFile);
         $output = (string) stream_get_contents($errorFile);
-        static::assertStringContainsString($wrongQuery, $output);
-        static::assertStringNotContainsString('SHOW VARIABLES', $output);
+        self::assertStringContainsString($wrongQuery, $output);
+        self::assertStringNotContainsString('SHOW VARIABLES', $output);
     }
 
     /**
@@ -119,15 +124,15 @@ final class MysqlTest extends TestCase
     private function createStreams(string $input): array
     {
         $inputFile = tmpfile();
-        static::assertIsResource($inputFile);
+        self::assertIsResource($inputFile);
         fwrite($inputFile, $input);
         rewind($inputFile);
 
         $outputFile = tmpfile();
-        static::assertIsResource($outputFile);
+        self::assertIsResource($outputFile);
 
         $errorFile = tmpfile();
-        static::assertIsResource($errorFile);
+        self::assertIsResource($errorFile);
 
         return [$inputFile, $outputFile, $errorFile];
     }
