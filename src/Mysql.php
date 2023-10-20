@@ -13,8 +13,7 @@ final class Mysql implements MysqlInterface
         private readonly string $database,
         private readonly int $port,
         private readonly string $socket
-    ) {
-    }
+    ) {}
 
     /**
      * @param resource $inputStream
