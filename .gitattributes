@@ -6,4 +6,4 @@
 Makefile export-ignore
 composer-require-checker.json export-ignore
 phpstan.neon export-ignore
-phpunit.xml.dist export-ignore
+phpunit.xml export-ignore
