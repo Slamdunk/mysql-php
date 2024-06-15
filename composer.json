@@ -17,11 +17,11 @@
         "ext-mysqli": "*"
     },
     "require-dev": {
-        "friendsofphp/php-cs-fixer": "^3.58.1",
+        "friendsofphp/php-cs-fixer": "^3.59.1",
         "phpstan/phpstan": "^1.11.4",
         "phpstan/phpstan-phpunit": "^1.4.0",
         "phpstan/phpstan-strict-rules": "^1.6.0",
-        "phpunit/phpunit": "^10.5.20"
+        "phpunit/phpunit": "^10.5.21"
     },
     "autoload": {
         "psr-4": {
