@@ -13,15 +13,15 @@
         }
     ],
     "require": {
-        "php": "~8.1.0 || ~8.2.0",
+        "php": "~8.1.0 || ~8.2.0 || ~8.3.0",
         "ext-mysqli": "*"
     },
     "require-dev": {
-        "friendsofphp/php-cs-fixer": "^3.59.3",
-        "phpstan/phpstan": "^1.11.8",
+        "friendsofphp/php-cs-fixer": "^3.62.0",
+        "phpstan/phpstan": "^1.11.10",
         "phpstan/phpstan-phpunit": "^1.4.0",
         "phpstan/phpstan-strict-rules": "^1.6.0",
-        "phpunit/phpunit": "^10.5.28"
+        "phpunit/phpunit": "^10.5.29"
     },
     "autoload": {
         "psr-4": {
